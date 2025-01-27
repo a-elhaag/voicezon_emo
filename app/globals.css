@@ -4,84 +4,57 @@
 
 @layer base {
   :root {
+    --color-background: #FFFEFC;
+    /* Off White */
+    --color-dark-gray: #3A3A3A;
+    /* Dark Gray */
+    --color-dark-teal: #1C534A;
+    /* Dark Teal */
+    --color-light-peach: #FBECE4;
+    /* Light Peach */
+
     --background: 40 100% 99%;
-    /* Off White - #FFFEFC */
     --foreground: 0 0% 23%;
-    /* Dark Gray (Jet) - #3A3A3A */
     --card: 40 100% 99%;
-    /* Off White - #FFFEFC */
     --card-foreground: 0 0% 23%;
-    /* Dark Gray (Jet) - #3A3A3A */
     --popover: 40 100% 99%;
-    /* Off White - #FFFEFC */
     --popover-foreground: 0 0% 23%;
-    /* Dark Gray (Jet) - #3A3A3A */
     --primary: 170 50% 22%;
-    /* Dark Teal - #1C534A */
     --primary-foreground: 40 100% 99%;
-    /* Off White - #FFFEFC */
-    --secondary: 205 98% 64%;
-    /* Argentinian Blue - #4BB3FD */
+    --secondary: 21 65% 92%;
     --secondary-foreground: 0 0% 23%;
-    /* Dark Gray (Jet) - #3A3A3A */
     --muted: 40 100% 99%;
-    /* Off White - #FFFEFC */
     --muted-foreground: 0 0% 23%;
-    /* Dark Gray (Jet) - #3A3A3A */
     --accent: 170 50% 22%;
-    /* Dark Teal - #1C534A */
     --accent-foreground: 40 100% 99%;
-    /* Off White - #FFFEFC */
     --destructive: 0 84.2% 60.2%;
     --destructive-foreground: 40 100% 99%;
-    /* Off White - #FFFEFC */
     --border: 170 50% 22%;
-    /* Dark Teal - #1C534A */
     --input: 170 50% 22%;
-    /* Dark Teal - #1C534A */
     --ring: 170 50% 22%;
-    /* Dark Teal - #1C534A */
     --radius: 0.5rem;
   }
 
   .dark {
     --background: 0 0% 23%;
-    /* Dark Gray (Jet) - #3A3A3A */
     --foreground: 40 100% 99%;
-    /* Off White - #FFFEFC */
     --card: 0 0% 23%;
-    /* Dark Gray (Jet) - #3A3A3A */
     --card-foreground: 40 100% 99%;
-    /* Off White - #FFFEFC */
     --popover: 0 0% 23%;
-    /* Dark Gray (Jet) - #3A3A3A */
     --popover-foreground: 40 100% 99%;
-    /* Off White - #FFFEFC */
-    --primary: 205 98% 64%;
-    /* Argentinian Blue - #4BB3FD */
+    --primary: 170 50% 22%;
     --primary-foreground: 0 0% 23%;
-    /* Dark Gray (Jet) - #3A3A3A */
-    --secondary: 170 50% 22%;
-    /* Dark Teal - #1C534A */
+    --secondary: 21 65% 92%;
     --secondary-foreground: 40 100% 99%;
-    /* Off White - #FFFEFC */
     --muted: 0 0% 23%;
-    /* Dark Gray (Jet) - #3A3A3A */
     --muted-foreground: 40 100% 99%;
-    /* Off White - #FFFEFC */
-    --accent: 205 98% 64%;
-    /* Argentinian Blue - #4BB3FD */
+    --accent: 170 50% 22%;
     --accent-foreground: 40 100% 99%;
-    /* Off White - #FFFEFC */
     --destructive: 0 62.8% 30.6%;
     --destructive-foreground: 40 100% 99%;
-    /* Off White - #FFFEFC */
     --border: 0 0% 23%;
-    /* Dark Gray (Jet) - #3A3A3A */
     --input: 0 0% 23%;
-    /* Dark Gray (Jet) - #3A3A3A */
-    --ring: 205 98% 64%;
-    /* Argentinian Blue - #4BB3FD */
+    --ring: 170 50% 22%;
   }
 }
 
