@@ -34,20 +34,16 @@ const Card: React.FC<CardProps> = ({
         >
             {/* FRONT */}
             <div className="card-front">
-                <div className="content-wrapper">
-                    {badgeText && <div className="badge">{badgeText}</div>}
-                    <div className="icon-wrapper">{icon}</div>
-                    <h3 className="card-title">{title}</h3>
-                    <p className="card-short-desc">{shortDescription}</p>
-                </div>
+                {badgeText && <div className="badge">{badgeText}</div>}
+                <div className="icon-wrapper">{icon}</div>
+                <h3 className="card-title">{title}</h3>
+                <p className="card-short-desc">{shortDescription}</p>
             </div>
 
             {/* BACK */}
             <div className="card-back">
-                <div className="content-wrapper">
-                    <h3 className="card-title">More Info</h3>
-                    <p className="card-detailed-desc">{detailedDescription}</p>
-                </div>
+                <h3 className="card-title">More Info</h3>
+                <p className="card-detailed-desc">{detailedDescription}</p>
             </div>
         </div>
     );
