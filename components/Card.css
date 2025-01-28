@@ -1,0 +1,223 @@
+/* Container for 3D flip */
+.card-container {
+  width: 250px;
+  height: 350px;
+  position: relative;
+  transform-style: preserve-3d;
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  cursor: pointer;
+  perspective: 1500px;
+  border-radius: 15px;
+  overflow: hidden;
+  box-shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+  will-change: transform;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+/* Update flip animation */
+.card-container.is-flipped {
+  transform: rotateY(180deg) scale(1.05);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  background: linear-gradient(135deg,
+      rgba(251, 236, 228, 0.9) 0%,
+      rgba(251, 236, 228, 1) 100%);
+  /* subtle peach gradient */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  transform-style: preserve-3d;
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-rendering: optimizeLegibility;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Reset individual side transforms */
+.card-front {
+  transform: rotateY(0);
+}
+
+.card-back {
+  transform: rotateY(180deg);
+  position: absolute;
+  top: 0;
+}
+
+/* Hover indication */
+.card-container:hover:not(.is-flipped) {
+  transform: scale(1.05) translateY(-10px);
+  box-shadow: 0 15px 30px rgba(0, 0, 0, 0.2);
+}
+
+/* Both sides share base styles */
+.card-front,
+.card-back {
+  width: 100%;
+  height: 100%;
+  position: absolute;
+  backface-visibility: hidden;
+  background: linear-gradient(135deg,
+      rgba(251, 236, 228, 0.9) 0%,
+      rgba(251, 236, 228, 1) 100%);
+  /* subtle peach gradient */
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  padding: 1rem;
+  transform-style: preserve-3d;
+  transition: all 0.8s cubic-bezier(0.175, 0.885, 0.32, 1.275);
+  text-rendering: optimizeLegibility;
+  transform: translateZ(0);
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+}
+
+/* Content wrapper to prevent text distortion */
+.content-wrapper {
+  position: relative;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  transform: translateZ(0);
+  will-change: transform;
+  backface-visibility: hidden;
+  -webkit-backface-visibility: hidden;
+  transition: opacity 0.3s ease;
+}
+
+/* Optional: Add fade effect during transition */
+.card-container.is-flipped .card-front .content-wrapper {
+  opacity: 0;
+}
+
+.card-container.is-flipped .card-back .content-wrapper {
+  opacity: 1;
+}
+
+/* FRONT SIDE */
+.card-front {
+  transform: rotateY(0deg);
+}
+
+.card-front::after,
+.card-back::after {
+  content: '';
+  position: absolute;
+  top: 0;
+  left: -100%;
+  width: 200%;
+  height: 100%;
+  background: linear-gradient(
+    90deg,
+    transparent,
+    rgba(255, 255, 255, 0.2),
+    transparent
+  );
+  transition: 0.5s;
+}
+
+.card-container:hover .card-front::after,
+.card-container:hover .card-back::after {
+  left: 100%;
+}
+
+.icon-wrapper {
+  margin-bottom: 0.5rem;
+  transform: translateZ(30px);
+  transition: transform 0.3s ease;
+  filter: drop-shadow(0 2px 3px rgba(0, 0, 0, 0.1));
+}
+
+.card-title {
+  color: var(--color-dark-teal);
+  font-size: 1.1rem;
+  margin-bottom: 0.5rem;
+  text-align: center;
+  transform: translateZ(25px);
+  font-weight: 600;
+  letter-spacing: 0.5px;
+  text-shadow: 0 1px 1px rgba(0, 0, 0, 0.1);
+  opacity: 0.95;
+}
+
+.card-short-desc {
+  color: var(--color-dark-gray);
+  font-size: 0.85rem;
+  text-align: center;
+  max-width: 80%;
+  line-height: 1.3;
+  transform: translateZ(20px);
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+.card-container:hover .card-short-desc,
+.card-container:hover .card-detailed-desc {
+  opacity: 1;
+}
+
+/* Badge */
+.badge {
+  position: absolute;
+  top: 0.8rem;
+  left: 0.8rem;
+  background-color: var(--color-dark-teal);
+  color: var(--color-background);
+  padding: 0.2rem 0.6rem;
+  font-size: 0.75rem;
+  border-radius: 4px;
+  transform: translateZ(40px);
+  animation: badgePulse 2s infinite;
+  backdrop-filter: blur(4px);
+  font-weight: 500;
+  letter-spacing: 0.5px;
+}
+
+@keyframes badgePulse {
+  0% { transform: translateZ(40px) scale(1); }
+  50% { transform: translateZ(40px) scale(1.1); }
+  100% { transform: translateZ(40px) scale(1); }
+}
+
+/* BACK SIDE */
+.card-back {
+  transform: rotateY(180deg);
+}
+
+.card-detailed-desc {
+  color: var(--color-dark-gray);
+  font-size: 0.85rem;
+  text-align: center;
+  max-width: 85%;
+  line-height: 1.4;
+  margin-bottom: 1rem;
+  transform: translateZ(20px);
+  font-weight: 400;
+  letter-spacing: 0.2px;
+  opacity: 0.9;
+  transition: opacity 0.3s ease;
+}
+
+/* Smooth text transition for flip */
+.card-container.is-flipped .card-front *,
+.card-container.is-flipped .card-back * {
+  transition-delay: 0.2s;
+}
