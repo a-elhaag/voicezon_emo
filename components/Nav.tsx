@@ -1,72 +1,89 @@
 "use client";
 
 import { useLayoutEffect, useState } from "react";
-import HumeLogo from "./logos/Hume";
+import Image from 'next/image';
+import Link from 'next/link';
 import { Button } from "./ui/button";
-import { Moon, Sun } from "lucide-react";
-import Github from "./logos/GitHub";
-import pkg from '@/package.json';
+import { Moon, Sun, Menu } from "lucide-react";
 
 export const Nav = () => {
-  const [isDarkMode, setIsDarkMode] = useState(false);
+    const [isDarkMode, setIsDarkMode] = useState(false);
+    const [isMenuOpen, setIsMenuOpen] = useState(false);
 
-  useLayoutEffect(() => {
-    const el = document.documentElement;
+    useLayoutEffect(() => {
+        const el = document.documentElement;
+        setIsDarkMode(el.classList.contains("dark"));
+    }, []);
 
-    if (el.classList.contains("dark")) {
-      setIsDarkMode(true);
-    } else {
-      setIsDarkMode(false);
-    }
-  }, []);
+    const toggleDark = () => {
+        const el = document.documentElement;
+        el.classList.toggle("dark");
+        setIsDarkMode((prev) => !prev);
+    };
 
-  const toggleDark = () => {
-    const el = document.documentElement;
-    el.classList.toggle("dark");
-    setIsDarkMode((prev) => !prev);
-  };
+    return (
+        <nav className="bg-background border-b border-border sticky top-0 z-50">
+            <div className="container mx-auto px-4 py-3">
+                <div className="flex items-center justify-between">
+                    {/* Logo */}
+                    <Link href="/" className="flex items-center">
+                        <Image
+                            src="/logo.png"
+                            alt="VoiceZon Logo"
+                            width={120}
+                            height={40}
+                            className="cursor-pointer"
+                        />
+                    </Link>
 
-  return (
-    <div
-      className={
-        "px-4 py-2 flex items-center h-14 z-50 bg-card border-b border-border"
-      }
-    >
-      <div>
-        <HumeLogo className={"h-5 w-auto"} />
-      </div>
-      <div className={"ml-auto flex items-center gap-1"}>
-        <Button
-          onClick={() => {
-            window.open(
-              pkg.homepage,
-              "_blank",
-              "noopener noreferrer"
-            );
-          }}
-          variant={"ghost"}
-          className={"ml-auto flex items-center gap-1.5"}
-        >
-          <span>
-            <Github className={"size-4"} />
-          </span>
-          <span>Star on GitHub</span>
-        </Button>
-        <Button
-          onClick={toggleDark}
-          variant={"ghost"}
-          className={"ml-auto flex items-center gap-1.5"}
-        >
-          <span>
-            {isDarkMode ? (
-              <Sun className={"size-4"} />
-            ) : (
-              <Moon className={"size-4"} />
-            )}
-          </span>
-          <span>{isDarkMode ? "Light" : "Dark"} Mode</span>
-        </Button>
-      </div>
-    </div>
-  );
+                    {/* Desktop Navigation */}
+                    <div className="hidden md:flex items-center space-x-6">
+                        <Link href="/about" className="hover:text-primary">About</Link>
+                        <Link href="/services" className="hover:text-primary">Services</Link>
+                        <Link href="/contact" className="hover:text-primary">Contact</Link>
+                        
+                        <Button
+                            onClick={toggleDark}
+                            variant="ghost"
+                            className="flex items-center gap-1.5"
+                        >
+                            {isDarkMode ? (
+                                <Sun className="size-4" />
+                            ) : (
+                                <Moon className="size-4" />
+                            )}
+                        </Button>
+
+                        <Button variant="default" className="bg-gradient hover:opacity-90">
+                            Get Started
+                        </Button>
+                    </div>
+
+                    {/* Mobile Menu Button */}
+                    <Button
+                        variant="ghost"
+                        className="md:hidden"
+                        onClick={() => setIsMenuOpen(!isMenuOpen)}
+                    >
+                        <Menu className="size-6" />
+                    </Button>
+                </div>
+
+                {/* Mobile Navigation */}
+                {isMenuOpen && (
+                    <div className="md:hidden pt-4 pb-3 space-y-2">
+                        <Link href="/about" className="block py-2 hover:text-primary">About</Link>
+                        <Link href="/services" className="block py-2 hover:text-primary">Services</Link>
+                        <Link href="/contact" className="block py-2 hover:text-primary">Contact</Link>
+                        <Button
+                            variant="default"
+                            className="w-full bg-gradient hover:opacity-90 mt-4"
+                        >
+                            Get Started
+                        </Button>
+                    </div>
+                )}
+            </div>
+        </nav>
+    );
 };

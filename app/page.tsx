@@ -6,6 +6,7 @@ import MotionButton from "@/components/MotionButton";
 import { FaBrain, FaBriefcase } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import FAQSection from "@/components/FAQSection";
+import Footer from "@/components/Footer";
 
 interface MotionButtonProps {
   children?: React.ReactNode;
@@ -292,6 +293,8 @@ function CTASection() {
   );
 }
 
+
+
 export default function LandingPage() {
   const featureRef = useRef<HTMLElement>(null);
 
@@ -314,11 +317,7 @@ export default function LandingPage() {
         <FeaturesSection />
         <FAQSection />
         <CTASection />
-        <footer className="py-8 bg-[var(--color-light-peach)] text-center">
-          <p className="text-sm text-[var(--color-dark-gray)]">
-            &copy; {new Date().getFullYear()} VoiceZon. All rights reserved.
-          </p>
-        </footer>
+        <Footer />
       </div>
     </div>
   );
