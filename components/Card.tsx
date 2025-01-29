@@ -1,5 +1,6 @@
 "use client"
 import React, { useState } from "react";
+import { motion } from "framer-motion";
 import "./Card.css";
 
 interface CardProps {
@@ -19,18 +20,16 @@ const Card: React.FC<CardProps> = ({
 }) => {
     const [isFlipped, setIsFlipped] = useState(false);
 
-    const handleCardClick = () => {
-        setIsFlipped((prev) => !prev);
-    };
-
     return (
-        <div
+        <motion.div
             className={`card-container ${isFlipped ? "is-flipped" : ""}`}
-            onClick={handleCardClick}
+            onClick={() => setIsFlipped(!isFlipped)}
+            whileHover={{ scale: 1.05 }}
+            transition={{ duration: 0.3 }}
             role="button"
             aria-label={`Feature card: ${title}`}
             tabIndex={0} // Make it focusable via keyboard
-            onKeyPress={(e) => e.key === "Enter" && handleCardClick()}
+            onKeyPress={(e) => e.key === "Enter" && setIsFlipped(!isFlipped)}
         >
             {/* FRONT */}
             <div className="card-front">
@@ -45,7 +44,7 @@ const Card: React.FC<CardProps> = ({
                 <h3 className="card-title">More Info</h3>
                 <p className="card-detailed-desc">{detailedDescription}</p>
             </div>
-        </div>
+        </motion.div>
     );
 };
 
