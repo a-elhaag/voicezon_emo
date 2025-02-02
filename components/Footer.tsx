@@ -1,3 +1,5 @@
+"use client";
+
 import Link from "next/link";
 import Image from "next/image";
 import {
@@ -35,9 +37,9 @@ const Footer = () => {
                             href={socialLinks.facebook}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="transform hover:scale-110 transition-transform duration-200"
+                            className="transform transition-all duration-200 hover:-translate-y-1 hover:text-[var(--color-dark-teal)]"
                         >
-                            <FaFacebook className="text-2xl hover:text-secondary" />
+                            <FaFacebook className="text-2xl" />
                         </a>
                     )}
                     {socialLinks.twitter && (
@@ -45,9 +47,9 @@ const Footer = () => {
                             href={socialLinks.twitter}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="transform hover:scale-110 transition-transform duration-200"
+                            className="transform transition-all duration-200 hover:-translate-y-1 hover:text-[var(--color-dark-teal)]"
                         >
-                            <FaTwitter className="text-2xl hover:text-secondary" />
+                            <FaTwitter className="text-2xl" />
                         </a>
                     )}
                     {socialLinks.instagram && (
@@ -55,9 +57,9 @@ const Footer = () => {
                             href={socialLinks.instagram}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="transform hover:scale-110 transition-transform duration-200"
+                            className="transform transition-all duration-200 hover:-translate-y-1 hover:text-[var(--color-dark-teal)]"
                         >
-                            <FaInstagram className="text-2xl hover:text-secondary" />
+                            <FaInstagram className="text-2xl" />
                         </a>
                     )}
                     {socialLinks.linkedin && (
@@ -65,9 +67,9 @@ const Footer = () => {
                             href={socialLinks.linkedin}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="transform hover:scale-110 transition-transform duration-200"
+                            className="transform transition-all duration-200 hover:-translate-y-1 hover:text-[var(--color-dark-teal)]"
                         >
-                            <FaLinkedin className="text-2xl hover:text-secondary" />
+                            <FaLinkedin className="text-2xl" />
                         </a>
                     )}
                     {socialLinks.youtube && (
@@ -75,9 +77,9 @@ const Footer = () => {
                             href={socialLinks.youtube}
                             target="_blank"
                             rel="noopener noreferrer"
-                            className="transform hover:scale-110 transition-transform duration-200"
+                            className="transform transition-all duration-200 hover:-translate-y-1 hover:text-[var(--color-dark-teal)]"
                         >
-                            <FaYoutube className="text-2xl hover:text-secondary" />
+                            <FaYoutube className="text-2xl" />
                         </a>
                     )}
                 </div>
@@ -104,13 +106,13 @@ const Footer = () => {
                     <div className="text-center space-y-4">
                         <h3 className="font-bold text-lg">Quick Links</h3>
                         <div className="flex flex-col space-y-1">
-                            <Link href="/about" className="hover:text-secondary">
+                            <Link href="/about" className="transition-all hover:-translate-y-1 hover:text-[var(--color-dark-teal)]">
                                 About Us
                             </Link>
-                            <Link href="/services" className="hover:text-secondary">
+                            <Link href="/services" className="transition-all hover:-translate-y-1 hover:text-[var(--color-dark-teal)]">
                                 Services
                             </Link>
-                            <Link href="/contact" className="hover:text-secondary">
+                            <Link href="/contact" className="transition-all hover:-translate-y-1 hover:text-[var(--color-dark-teal)]">
                                 Contact
                             </Link>
                         </div>
@@ -131,13 +133,22 @@ const Footer = () => {
                     <div className="flex flex-wrap justify-center md:justify-between items-center space-y-3 md:space-y-0">
                         {/* Legal Links */}
                         <div className="flex space-x-6 text-sm">
-                            <Link href="/privacy-policy" className="hover:text-secondary">
+                            <Link
+                                href="/privacy-policy"
+                                className="transition-all hover:-translate-y-1 hover:text-[var(--color-dark-teal)]"
+                            >
                                 Privacy Policy
                             </Link>
-                            <Link href="/terms-of-service" className="hover:text-secondary">
+                            <Link
+                                href="/terms-of-service"
+                                className="transition-all hover:-translate-y-1 hover:text-[var(--color-dark-teal)]"
+                            >
                                 Terms of Service
                             </Link>
-                            <Link href="/ai-disclaimer" className="hover:text-secondary">
+                            <Link
+                                href="/ai-disclaimer"
+                                className="transition-all hover:-translate-y-1 hover:text-[var(--color-dark-teal)]"
+                            >
                                 AI Disclaimer
                             </Link>
                         </div>

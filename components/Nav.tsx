@@ -1,89 +1,39 @@
 "use client";
 
-import { useLayoutEffect, useState } from "react";
-import Image from 'next/image';
-import Link from 'next/link';
-import { Button } from "./ui/button";
-import { Moon, Sun, Menu } from "lucide-react";
+import Link from "next/link";
+import Image from "next/image";
 
-export const Nav = () => {
-    const [isDarkMode, setIsDarkMode] = useState(false);
-    const [isMenuOpen, setIsMenuOpen] = useState(false);
+export default function NavBar() {
+  return (
+    <nav className="bg-[var(--color-background)] text-[var(--color-dark-gray)] py-3 sticky top-0 z-50">
+      <div className="container mx-auto px-4 flex items-center justify-between">
+        {/* Logo */}
+        <Link href="/" className="flex items-center">
+          <Image
+            src="@/components/logo.svg"
+            alt="VoiceZon Logo"
+            width={120}
+            height={40}
+            className="cursor-pointer"
+          />
+        </Link>
 
-    useLayoutEffect(() => {
-        const el = document.documentElement;
-        setIsDarkMode(el.classList.contains("dark"));
-    }, []);
-
-    const toggleDark = () => {
-        const el = document.documentElement;
-        el.classList.toggle("dark");
-        setIsDarkMode((prev) => !prev);
-    };
-
-    return (
-        <nav className="bg-background border-b border-border sticky top-0 z-50">
-            <div className="container mx-auto px-4 py-3">
-                <div className="flex items-center justify-between">
-                    {/* Logo */}
-                    <Link href="/" className="flex items-center">
-                        <Image
-                            src="/logo.png"
-                            alt="VoiceZon Logo"
-                            width={120}
-                            height={40}
-                            className="cursor-pointer"
-                        />
-                    </Link>
-
-                    {/* Desktop Navigation */}
-                    <div className="hidden md:flex items-center space-x-6">
-                        <Link href="/about" className="hover:text-primary">About</Link>
-                        <Link href="/services" className="hover:text-primary">Services</Link>
-                        <Link href="/contact" className="hover:text-primary">Contact</Link>
-                        
-                        <Button
-                            onClick={toggleDark}
-                            variant="ghost"
-                            className="flex items-center gap-1.5"
-                        >
-                            {isDarkMode ? (
-                                <Sun className="size-4" />
-                            ) : (
-                                <Moon className="size-4" />
-                            )}
-                        </Button>
-
-                        <Button variant="default" className="bg-gradient hover:opacity-90">
-                            Get Started
-                        </Button>
-                    </div>
-
-                    {/* Mobile Menu Button */}
-                    <Button
-                        variant="ghost"
-                        className="md:hidden"
-                        onClick={() => setIsMenuOpen(!isMenuOpen)}
-                    >
-                        <Menu className="size-6" />
-                    </Button>
-                </div>
-
-                {/* Mobile Navigation */}
-                {isMenuOpen && (
-                    <div className="md:hidden pt-4 pb-3 space-y-2">
-                        <Link href="/about" className="block py-2 hover:text-primary">About</Link>
-                        <Link href="/services" className="block py-2 hover:text-primary">Services</Link>
-                        <Link href="/contact" className="block py-2 hover:text-primary">Contact</Link>
-                        <Button
-                            variant="default"
-                            className="w-full bg-gradient hover:opacity-90 mt-4"
-                        >
-                            Get Started
-                        </Button>
-                    </div>
-                )}
-            </div>
-        </nav>
-    );
-};
+        {/* Right-side Buttons */}
+        <div className="flex items-center space-x-4">
+          <Link
+            href="/login"
+            className="px-4 py-2 rounded text-sm font-medium transition-colors hover:bg-[var(--color-light-peach)] hover:text-[var(--color-dark-teal)]"
+          >
+            Login
+          </Link>
+          <Link
+            href="/signup"
+            className="px-4 py-2 rounded bg-[var(--color-dark-teal)] text-[var(--color-background)] text-sm font-medium transition-colors hover:bg-[var(--color-dark-teal)]/90"
+          >
+            Sign Up
+          </Link>
+        </div>
+      </div>
+    </nav>
+  );
+}

@@ -2,11 +2,11 @@
 import React, { useRef, useEffect } from "react";
 import { motion, useScroll, useTransform } from "framer-motion";
 import Card from "@/components/Card";
-import MotionButton from "@/components/MotionButton";
 import { FaBrain, FaBriefcase } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import FAQSection from "@/components/FAQSection";
 import Footer from "@/components/Footer";
+import Link from "next/link";
 
 interface MotionButtonProps {
   children?: React.ReactNode;
@@ -163,6 +163,61 @@ function FeaturesSection() {
   );
 }
 
+/*
+  -------------
+  About Section
+  -------------
+*/
+function AboutSection() {
+  return (
+    <section className="container-padding py-12 sm:py-16">
+      <div className="max-w-3xl mx-auto bg-[var(--color-light-peach)] rounded-[15px] p-6 sm:p-8 text-center">
+        <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-dark-gray)] mb-4">
+          Discover Our Mission
+        </h2>
+        <p className="responsive-text text-[var(--color-dark-gray)] mb-6">
+          At VoiceZon, we're dedicated to empowering your growth with emotion-aware AI, comprehensive career guidance, and personalized tools for self-improvement.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          {/* Link to the About page */}
+          <Link href="/about">
+            <Button size="lg" variant="primary">
+              Learn More About Us
+            </Button>
+          </Link>
+        </div>
+      </div>
+    </section>
+  );
+}
+
+/* 
+  -------------
+  CTA Section
+  -------------
+*/
+function CTASection() {
+  return (
+    <section className="container-padding py-12 sm:py-16">
+      <div className="max-w-3xl mx-auto bg-[var(--color-light-peach)] rounded-[15px] p-6 sm:p-8 text-center">
+        <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-dark-gray)] mb-4">
+          Ready to Elevate Your Journey?
+        </h2>
+        <p className="responsive-text text-[var(--color-dark-gray)] mb-6">
+          Join VoiceZon today and start your transformation.
+        </p>
+        <div className="flex flex-col sm:flex-row gap-4 justify-center">
+          <Button size="lg" variant="primary">
+            Get Started
+          </Button>
+          <Button size="lg" variant="outline">
+            Learn More
+          </Button>
+        </div>
+      </div>
+    </section>
+  );
+}
 // Update NetworkAnimation parameters
 function NetworkAnimation({ opacity = 1, particleCount = 75, connectionDistance = 200 }) {
   const canvasRef = useRef<HTMLCanvasElement>(null);
@@ -269,29 +324,6 @@ function NetworkAnimation({ opacity = 1, particleCount = 75, connectionDistance 
 }
 
 
-/* 
-  -------------
-  CTA Section
-  -------------
-*/
-function CTASection() {
-  return (
-    <section className="container-padding py-12 sm:py-16">
-      <div className="max-w-3xl mx-auto bg-[var(--color-light-peach)] rounded-[15px] p-6 sm:p-8 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-dark-gray)] mb-4">
-          Ready to Elevate Your Journey?
-        </h2>
-        <p className="responsive-text text-[var(--color-dark-gray)] mb-6">
-          Join VoiceZon today and start your transformation.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" variant="primary">Get Started</Button>
-          <Button size="lg" variant="outline">Learn More</Button>
-        </div>
-      </div>
-    </section>
-  );
-}
 
 
 
@@ -316,6 +348,7 @@ export default function LandingPage() {
         <HeroSection />
         <FeaturesSection />
         <FAQSection />
+        <AboutSection />
         <CTASection />
         <Footer />
       </div>

@@ -10,6 +10,7 @@ export default function Expressions({
 }: {
   values: Record<string, number>;
 }) {
+  // Get the top 3 expressions by value
   const top3 = R.pipe(
     values,
     R.entries(),
@@ -18,53 +19,61 @@ export default function Expressions({
     R.take(3)
   );
 
+  // Calculate the total value for the top 3
+  const total = top3.reduce((acc, [, val]) => acc + val, 0);
+
+  // Calculate each segment's percentage value
+  const segments = top3.map(([key, value]) => {
+    // Clamp each percentage between 0 and 100
+    const percent = total > 0 ? (value / total) * 100 : 0;
+    return { key, value, percent };
+  });
+
   return (
-    <div
-      className={
-        "text-xs p-3 w-full border-t border-border flex flex-col md:flex-row gap-3"
-      }
-    >
-      {top3.map(([key, value]) => (
-        <div key={key} className={"w-full overflow-hidden"}>
+    <div className="w-full p-4 bg-white dark:bg-gray-900 rounded-xl shadow-md border border-gray-200 dark:border-gray-700">
+      {/* Combined Bar */}
+      <div className="relative h-6 bg-gray-200 dark:bg-gray-700 rounded-full overflow-hidden">
+        {segments.map(({ key, percent }, index) => (
+          <motion.div
+            key={key}
+            className="h-full"
+            style={{
+              background: isExpressionColor(key)
+                ? expressionColors[key]
+                : "#aaa",
+              width: 0,
+            } as CSSProperties}
+            initial={{ width: 0 }}
+            animate={{ width: `${percent}%` }}
+            transition={{ delay: index * 0.1, duration: 0.8 }}
+          />
+        ))}
+      </div>
+
+      {/* Legend */}
+      <div className="mt-4 grid grid-cols-1 sm:grid-cols-3 gap-2">
+        {segments.map(({ key, value, percent }) => (
           <div
-            className={"flex items-center justify-between gap-1 font-mono pb-1"}
-          >
-            <div className={"font-medium truncate"}>
-              {expressionLabels[key]}
-            </div>
-            <div className={"tabular-nums opacity-50"}>{value.toFixed(2)}</div>
-          </div>
-          <div
-            className={"relative h-1"}
-            style={
-              {
-                "--bg": isExpressionColor(key)
-                  ? expressionColors[key]
-                  : "var(--bg)",
-              } as CSSProperties
-            }
+            key={key}
+            className="flex items-center gap-2 p-2 bg-gray-50 dark:bg-gray-800 rounded-lg shadow-sm"
           >
             <div
-              className={
-                "absolute top-0 left-0 size-full rounded-full opacity-10 bg-[var(--bg)]"
-              }
-            />
-            <motion.div
-              className={
-                "absolute top-0 left-0 h-full bg-[var(--bg)] rounded-full"
-              }
-              initial={{ width: 0 }}
-              animate={{
-                width: `${R.pipe(
-                  value,
-                  R.clamp({ min: 0, max: 1 }),
-                  (value) => `${value * 100}%`
-                )}`,
+              className="w-3 h-3 rounded-full"
+              style={{
+                background: isExpressionColor(key)
+                  ? expressionColors[key]
+                  : "#aaa",
               }}
             />
+            <div className="flex-1 text-sm font-medium text-gray-800 dark:text-gray-100 truncate">
+              {expressionLabels[key]}
+            </div>
+            <div className="text-xs font-mono text-gray-600 dark:text-gray-300">
+              {percent.toFixed(1)}%
+            </div>
           </div>
-        </div>
-      ))}
+        ))}
+      </div>
     </div>
   );
 }

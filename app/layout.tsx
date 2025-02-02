@@ -2,8 +2,8 @@ import type { Metadata } from "next";
 import { GeistSans } from "geist/font/sans";
 import { GeistMono } from "geist/font/mono";
 import "./globals.css";
-import { Nav } from "@/components/Nav";
 import { cn } from "@/utils";
+import NavBar from "@/components/Nav";
 
 export const metadata: Metadata = {
   title: "Hume AI - EVI - Next.js Starter",
@@ -24,7 +24,7 @@ export default function RootLayout({
           "flex flex-col min-h-screen"
         )}
       >
-        <Nav />
+        <NavBar />
         {children}
       </body>
     </html>

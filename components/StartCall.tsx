@@ -8,48 +8,40 @@ export default function StartCall() {
 
   return (
     <AnimatePresence>
-      {status.value !== "connected" ? (
+      {status.value !== "connected" && (
         <motion.div
-          className={"fixed inset-0 p-4 flex items-center justify-center bg-background"}
-          initial="initial"
-          animate="enter"
-          exit="exit"
-          variants={{
-            initial: { opacity: 0 },
-            enter: { opacity: 1 },
-            exit: { opacity: 0 },
-          }}
+          className="fixed inset-0 p-4 flex items-center justify-center bg-background/95 backdrop-blur-sm"
+          initial={{ opacity: 0 }}
+          animate={{ opacity: 1 }}
+          exit={{ opacity: 0 }}
         >
-          <AnimatePresence>
-            <motion.div
-              variants={{
-                initial: { scale: 0.5 },
-                enter: { scale: 1 },
-                exit: { scale: 0.5 },
+          <motion.div
+            initial={{ scale: 0.9, y: 20 }}
+            animate={{ scale: 1, y: 0 }}
+            exit={{ scale: 0.9, y: 20 }}
+            transition={{ type: "spring", damping: 20, stiffness: 300 }}
+            className="text-center"
+          >
+            <Button
+              className="flex items-center gap-3 px-8 py-6 rounded-2xl bg-[var(--color-dark-teal)] 
+                       hover:bg-[var(--color-dark-teal)]/90 transform hover:scale-105 
+                       transition-all duration-300 shadow-lg hover:shadow-xl"
+              onClick={() => {
+                connect()
+                  .then(() => {})
+                  .catch(() => {})
+                  .finally(() => {});
               }}
             >
-              <Button
-                className={"z-50 flex items-center gap-1.5"}
-                onClick={() => {
-                  connect()
-                    .then(() => {})
-                    .catch(() => {})
-                    .finally(() => {});
-                }}
-              >
-                <span>
-                  <Phone
-                    className={"size-4 opacity-50"}
-                    strokeWidth={2}
-                    stroke={"currentColor"}
-                  />
-                </span>
-                <span>Start Call</span>
-              </Button>
-            </motion.div>
-          </AnimatePresence>
+              <Phone className="size-5" />
+              <span className="text-lg">Start Conversation</span>
+            </Button>
+            <p className="mt-4 text-sm text-muted-foreground">
+              Click to start a new voice conversation
+            </p>
+          </motion.div>
         </motion.div>
-      ) : null}
+      )}
     </AnimatePresence>
   );
 }

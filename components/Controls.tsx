@@ -9,74 +9,56 @@ import { cn } from "@/utils";
 
 export default function Controls() {
   const { disconnect, status, isMuted, unmute, mute, micFft } = useVoice();
+  
+  const handleDisconnect = async () => {
+    try {
+      await disconnect();
+      // Optional: Add any success handling here
+    } catch (error) {
+      console.error("Failed to disconnect:", error);
+      // Optional: Add error handling UI feedback here
+    }
+  };
 
   return (
-    <div
-      className={
-        cn(
-          "fixed bottom-0 left-0 w-full p-4 flex items-center justify-center",
-          "bg-gradient-to-t from-card via-card/90 to-card/0",
-        )
-      }
-    >
+    <div className="fixed bottom-0 left-0 w-full p-6 flex items-center justify-center bg-gradient-to-t from-background via-background/95 to-transparent">
       <AnimatePresence>
-        {status.value === "connected" ? (
+        {status.value === "connected" && (
           <motion.div
-            initial={{
-              y: "100%",
-              opacity: 0,
-            }}
-            animate={{
-              y: 0,
-              opacity: 1,
-            }}
-            exit={{
-              y: "100%",
-              opacity: 0,
-            }}
-            className={
-              "p-4 bg-card border border-border rounded-lg shadow-sm flex items-center gap-4"
-            }
+            initial={{ y: 50, opacity: 0 }}
+            animate={{ y: 0, opacity: 1 }}
+            exit={{ y: 50, opacity: 0 }}
+            transition={{ type: "spring", damping: 20, stiffness: 300 }}
+            className="p-4 bg-card/90 backdrop-blur-lg border border-border/40 rounded-2xl shadow-xl 
+                     flex items-center gap-6 hover:border-border/60 transition-all duration-300"
           >
             <Toggle
               pressed={!isMuted}
-              onPressedChange={() => {
-                if (isMuted) {
-                  unmute();
-                } else {
-                  mute();
-                }
-              }}
+              onPressedChange={() => isMuted ? unmute() : mute()}
+              className="transition-transform hover:scale-105"
             >
               {isMuted ? (
-                <MicOff className={"size-4"} />
+                <MicOff className="size-5 text-destructive" />
               ) : (
-                <Mic className={"size-4"} />
+                <Mic className="size-5 text-[var(--color-dark-teal)]" />
               )}
             </Toggle>
 
-            <div className={"relative grid h-8 w-48 shrink grow-0"}>
-              <MicFFT fft={micFft} className={"fill-current"} />
+            <div className="relative h-10 w-56 shrink grow-0 rounded-lg overflow-hidden">
+              <MicFFT fft={micFft} className="fill-[var(--color-dark-teal)]" />
             </div>
 
             <Button
-              className={"flex items-center gap-1"}
-              onClick={() => {
-                disconnect();
-              }}
-              variant={"destructive"}
+              onClick={handleDisconnect}
+              variant="destructive"
+              className="flex items-center gap-2 px-6 hover:scale-105 transition-transform"
+              disabled={status.value === "disconnecting"}
             >
-              <span>
-                <Phone
-                  className={"size-4 opacity-50"}
-                  strokeWidth={2}
-                  stroke={"currentColor"}
-                />
-              </span>
-              <span>End Call</span>
+              <Phone className="size-5" />
+              <span>{status.value === "disconnecting" ? "Ending..." : "End Call"}</span>
             </Button>
           </motion.div>
-        ) : null}
+        )}
       </AnimatePresence>
     </div>
   );

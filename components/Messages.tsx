@@ -14,53 +14,39 @@ const Messages = forwardRef<
   return (
     <motion.div
       layoutScroll
-      className={"grow rounded-md overflow-auto p-4"}
+      className="grow rounded-xl overflow-auto p-6 backdrop-blur-sm"
       ref={ref}
     >
-      <motion.div
-        className={"max-w-2xl mx-auto w-full flex flex-col gap-4 pb-24"}
-      >
-        <AnimatePresence mode={"popLayout"}>
+      <motion.div className="max-w-3xl mx-auto w-full flex flex-col gap-6 pb-24">
+        <AnimatePresence mode="popLayout">
           {messages.map((msg, index) => {
-            if (
-              msg.type === "user_message" ||
-              msg.type === "assistant_message"
-            ) {
+            if (msg.type === "user_message" || msg.type === "assistant_message") {
               return (
                 <motion.div
                   key={msg.type + index}
                   className={cn(
-                    "w-[80%]",
-                    "bg-card",
-                    "border border-border rounded",
-                    msg.type === "user_message" ? "ml-auto" : ""
+                    "w-[85%]",
+                    "backdrop-blur-md",
+                    "border border-border/40",
+                    "rounded-2xl shadow-lg",
+                    "transition-all duration-300",
+                    msg.type === "user_message" 
+                      ? "ml-auto bg-[var(--color-dark-teal)]/5" 
+                      : "bg-card/95"
                   )}
-                  initial={{
-                    opacity: 0,
-                    y: 10,
-                  }}
-                  animate={{
-                    opacity: 1,
-                    y: 0,
-                  }}
-                  exit={{
-                    opacity: 0,
-                    y: 0,
-                  }}
+                  initial={{ opacity: 0, y: 20, scale: 0.95 }}
+                  animate={{ opacity: 1, y: 0, scale: 1 }}
+                  exit={{ opacity: 0, scale: 0.95 }}
+                  transition={{ type: "spring", damping: 20, stiffness: 300 }}
                 >
-                  <div
-                    className={cn(
-                      "text-xs capitalize font-medium leading-none opacity-50 pt-4 px-3"
-                    )}
-                  >
-                    {msg.message.role}
+                  <div className="text-sm font-medium leading-none opacity-70 pt-4 px-5">
+                    {msg.message.role === "user" ? "You" : "Assistant"}
                   </div>
-                  <div className={"pb-3 px-3"}>{msg.message.content}</div>
+                  <div className="py-4 px-5 text-lg">{msg.message.content}</div>
                   <Expressions values={{ ...msg.models.prosody?.scores }} />
                 </motion.div>
               );
             }
-
             return null;
           })}
         </AnimatePresence>
