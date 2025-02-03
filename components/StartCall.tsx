@@ -1,7 +1,6 @@
 import { useVoice } from "@humeai/voice-react";
 import { AnimatePresence, motion } from "framer-motion";
 import { Button } from "./ui/button";
-import { Phone } from "lucide-react";
 
 export default function StartCall() {
   const { status, connect } = useVoice();
@@ -28,12 +27,11 @@ export default function StartCall() {
                        transition-all duration-300 shadow-lg hover:shadow-xl"
               onClick={() => {
                 connect()
-                  .then(() => {})
-                  .catch(() => {})
-                  .finally(() => {});
+                  .then(() => { })
+                  .catch(() => { })
+                  .finally(() => { });
               }}
             >
-              <Phone className="size-5" />
               <span className="text-lg">Start Conversation</span>
             </Button>
             <p className="mt-4 text-sm text-muted-foreground">
