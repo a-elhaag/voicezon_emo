@@ -4,7 +4,7 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { cn } from "@/utils";
 import NavBar from "@/components/Nav";
-import Footer from "@/components/Footer";
+import FooterWrapper from "@/components/FooterWrapper";
 
 export const metadata: Metadata = {
   title: "Voicezon",
@@ -33,7 +33,7 @@ export default function RootLayout({
       >
         <NavBar />
         {children}
-        <Footer />
+        <FooterWrapper />
       </body>
     </html>
   );
