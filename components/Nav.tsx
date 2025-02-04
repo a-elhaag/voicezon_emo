@@ -21,7 +21,7 @@ export default function NavBar() {
 
         {/* Right-side Buttons */}
         <div className="flex items-center space-x-4">
-          <Link
+          {/* <Link
             href="/login"
             className="px-4 py-2 rounded text-sm font-medium transition-colors hover:bg-[var(--color-light-peach)] hover:text-[var(--color-dark-teal)]"
           >
@@ -32,7 +32,7 @@ export default function NavBar() {
             className="px-4 py-2 rounded bg-[var(--color-dark-teal)] text-[var(--color-background)] text-sm font-medium transition-colors hover:bg-[var(--color-dark-teal)]/90"
           >
             Sign Up
-          </Link>
+          </Link> */}
         </div>
       </div>
     </nav>
