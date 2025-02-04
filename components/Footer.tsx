@@ -20,8 +20,8 @@ interface SocialMedia {
 
 const socialLinks: SocialMedia = {
     facebook: "https://facebook.com/voicezon",
-    twitter: "https://twitter.com/voicezon",
-    instagram: "https://instagram.com/voicezon",
+    // twitter: "https://twitter.com/voicezon",
+    // instagram: "https://instagram.com/voicezon",
     linkedin: "https://linkedin.com/company/voicezon",
     // youtube: 'https://youtube.com/voicezon', // Uncomment if needed
 };
@@ -90,16 +90,14 @@ const Footer = () => {
                     <div className="flex flex-col items-center md:items-start text-center md:text-left space-y-4">
                         <Link href="/">
                             <Image
-                                src="/logo.png"
+                                src="/logo2.svg"
                                 alt="VoiceZon Logo"
                                 width={150}
                                 height={50}
+                                priority
                                 className="cursor-pointer"
                             />
                         </Link>
-                        <p className="max-w-xs text-sm">
-                            Empowering voices through emotion AI technology
-                        </p>
                     </div>
 
                     {/* Quick Links */}
@@ -109,12 +107,9 @@ const Footer = () => {
                             <Link href="/about" className="transition-all hover:-translate-y-1 hover:text-[var(--color-dark-teal)]">
                                 About Us
                             </Link>
-                            <Link href="/services" className="transition-all hover:-translate-y-1 hover:text-[var(--color-dark-teal)]">
+                            {/* <Link href="/services" className="transition-all hover:-translate-y-1 hover:text-[var(--color-dark-teal)]">
                                 Services
-                            </Link>
-                            <Link href="/contact" className="transition-all hover:-translate-y-1 hover:text-[var(--color-dark-teal)]">
-                                Contact
-                            </Link>
+                            </Link> */}
                         </div>
                     </div>
 
@@ -123,7 +118,6 @@ const Footer = () => {
                         <h3 className="font-bold text-lg">Contact Us</h3>
                         <div className="text-sm space-y-1">
                             <p>Email: info@voicezon.com</p>
-                            <p>Phone: +1 (555) 123-4567</p>
                         </div>
                     </div>
                 </div>

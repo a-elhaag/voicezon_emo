@@ -9,7 +9,7 @@ const config = {
     './app/**/*.{ts,tsx}',
     './src/**/*.{ts,tsx}',
 	],
-  prefix: "",
+  prefix: "", 
   theme: {
     fontFamily: {
       'sans': ['var(--font-geist-sans)', ...defaultTheme.fontFamily.sans],

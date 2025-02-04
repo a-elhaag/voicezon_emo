@@ -21,7 +21,7 @@ export default function AboutVoicezon() {
                 </p>
             </div>
 
-        </section><Footer /></>
+        </section></>
 
 
 

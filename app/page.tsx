@@ -5,7 +5,6 @@ import Card from "@/components/Card";
 import { FaBrain, FaBriefcase } from "react-icons/fa";
 import { Button } from "@/components/ui/button";
 import FAQSection from "@/components/FAQSection";
-import Footer from "@/components/Footer";
 import Link from "next/link";
 
 interface MotionButtonProps {
@@ -227,7 +226,7 @@ function NetworkAnimation({ opacity = 1, particleCount = 75, connectionDistance 
     const canvas = canvasRef.current;
     if (!canvas) return;
 
-    const ctx = canvas.getContext('2d');
+    const ctx = canvas.getContext('2d') as CanvasRenderingContext2D;
     if (!ctx) return;
 
     const handleResize = () => {
@@ -248,14 +247,15 @@ function NetworkAnimation({ opacity = 1, particleCount = 75, connectionDistance 
       baseY: number;
 
       constructor() {
-        this.x = Math.random() * canvas.width;
-        this.y = Math.random() * canvas.height;
+        this.x = Math.random() * (canvas?.width ?? window.innerWidth);
+        this.y = Math.random() * (canvas?.height ?? window.innerHeight);
         this.baseY = this.y; // Store initial Y position
         this.directionX = (Math.random() - 0.5) * 0.5;
         this.directionY = (Math.random() - 0.5) * 0.5;
       }
 
       update(scrollOffset: number) {
+        if (!canvas) return;
         if (this.x < 0 || this.x > canvas.width) this.directionX *= -1;
         if (this.y < 0 || this.y > canvas.height) this.directionY *= -1;
 
@@ -279,6 +279,7 @@ function NetworkAnimation({ opacity = 1, particleCount = 75, connectionDistance 
       const scrollOffset = window.scrollY;
       const scrollOpacity = Math.max(0.1, opacity - (scrollOffset * 0.001));
 
+      if (!canvas) return;
       ctx.clearRect(0, 0, canvas.width, canvas.height);
 
       particles.forEach(particle => {
@@ -350,7 +351,7 @@ export default function LandingPage() {
         <FAQSection />
         <AboutSection />
         <CTASection />
-        <Footer />
+
       </div>
     </div>
   );

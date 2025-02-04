@@ -10,10 +10,11 @@ export default function NavBar() {
         {/* Logo */}
         <Link href="/" className="flex items-center">
           <Image
-            src="@/components/logo.svg"
+            src="/logo.svg"
             alt="VoiceZon Logo"
-            width={120}
-            height={40}
+            width={100}
+            height={10}
+            priority
             className="cursor-pointer"
           />
         </Link>

@@ -4,10 +4,14 @@ import { GeistMono } from "geist/font/mono";
 import "./globals.css";
 import { cn } from "@/utils";
 import NavBar from "@/components/Nav";
+import Footer from "@/components/Footer";
 
 export const metadata: Metadata = {
-  title: "Hume AI - EVI - Next.js Starter",
-  description: "A Next.js starter using Hume AI's Empathic Voice Interface",
+  title: "Voicezon",
+  description: "VoiceZon is an AI-powered personal development assistant designed to enhance soft skills, self-improvement, and life coaching through intelligent, interactive guidance.",
+  icons: {
+    icon: '/favicon.png',
+  }
 };
 
 export default function RootLayout({
@@ -17,6 +21,9 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
+      <head>
+        <link rel="icon" href="/favicon.png" />
+      </head>
       <body
         className={cn(
           GeistSans.variable,
@@ -26,6 +33,7 @@ export default function RootLayout({
       >
         <NavBar />
         {children}
+        <Footer />
       </body>
     </html>
   );
