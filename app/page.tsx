@@ -168,7 +168,7 @@ function AboutSection() {
           Discover Our Mission
         </h2>
         <p className="responsive-text text-[var(--color-dark-gray)] mb-6">
-          At VoiceZon, we're dedicated to empowering your growth with emotion-aware AI, comprehensive career guidance, and personalized tools for self-improvement.
+          At VoiceZon, we ignite your potential with AI-driven coaching, personalized career insights, and interactive tools designed to help you thrive.
         </p>
         <div className="flex flex-col sm:flex-row gap-4 justify-center">
           {/* Link to the About page */}
@@ -188,28 +188,28 @@ function AboutSection() {
   CTA Section
   -------------
 */
-function CTASection() {
-  return (
-    <section className="container-padding py-12 sm:py-16">
-      <div className="max-w-3xl mx-auto bg-[var(--color-light-peach)] rounded-[15px] p-6 sm:p-8 text-center">
-        <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-dark-gray)] mb-4">
-          Ready to Elevate Your Journey?
-        </h2>
-        <p className="responsive-text text-[var(--color-dark-gray)] mb-6">
-          Join VoiceZon today and start your transformation.
-        </p>
-        <div className="flex flex-col sm:flex-row gap-4 justify-center">
-          <Button size="lg" variant="primary">
-            Get Started
-          </Button>
-          <Button size="lg" variant="outline">
-            Learn More
-          </Button>
-        </div>
-      </div>
-    </section>
-  );
-}
+// function CTASection() {
+//   return (
+//     <section className="container-padding py-12 sm:py-16">
+//       <div className="max-w-3xl mx-auto bg-[var(--color-light-peach)] rounded-[15px] p-6 sm:p-8 text-center">
+//         <h2 className="text-3xl sm:text-4xl font-bold text-[var(--color-dark-gray)] mb-4">
+//           Ready to Elevate Your Journey?
+//         </h2>
+//         <p className="responsive-text text-[var(--color-dark-gray)] mb-6">
+//           Join VoiceZon today and start your transformation.
+//         </p>
+//         <div className="flex flex-col sm:flex-row gap-4 justify-center">
+//           <Button size="lg" variant="primary">
+//             Get Started
+//           </Button>
+//           <Button size="lg" variant="outline">
+//             Learn More
+//           </Button>
+//         </div>
+//       </div>
+//     </section>
+//   );
+// }
 
 
 export default function LandingPage() {
