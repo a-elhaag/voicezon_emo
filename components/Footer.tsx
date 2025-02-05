@@ -104,6 +104,9 @@ const Footer = () => {
                     <div className="text-center space-y-4">
                         <h3 className="font-bold text-lg">Quick Links</h3>
                         <div className="flex flex-col space-y-1">
+                            <Link href="/" className="transition-all hover:-translate-y-1 hover:text-[var(--color-dark-teal)]">
+                                Home
+                            </Link>
                             <Link href="/about" className="transition-all hover:-translate-y-1 hover:text-[var(--color-dark-teal)]">
                                 About Us
                             </Link>
