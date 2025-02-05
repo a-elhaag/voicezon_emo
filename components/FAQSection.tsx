@@ -5,16 +5,20 @@ import { useState } from "react";
 // FAQ dictionary for easy editing
 const FAQData = [
   {
-    question: "How does VoiceZon's emotion detection work?",
-    answer: "VoiceZon uses advanced AI algorithms to analyze voice patterns, tone, and speech characteristics to understand emotional states and provide personalized guidance."
+    question: "How does VoiceZon’s AI coaching work?",
+    answer: "VoiceZon uses advanced AI algorithms to analyze your voice patterns, behavior, and progress. Our digital coach, Vee, then delivers personalized guidance and actionable insights to support your unique growth journey."
   },
   {
-    question: "Is my data private and secure?",
-    answer: "Yes, we take privacy seriously. All your data is encrypted and stored securely. We never share your personal information with third parties."
+    question: "Is my data safe with VoiceZon?",
+    answer: "We take data protection seriously. Your information is managed under strict privacy practices, and we never share your personal details with external parties."
   },
   {
-    question: "What features are included in the free plan?",
-    answer: "The free plan includes basic emotion analysis, simple career guidance, and limited practice sessions. Premium features unlock advanced analytics and personalized coaching."
+    question: "How can I provide feedback during the beta?",
+    answer: "We value your input! You can share your thoughts and suggestions directly through the app’s feedback feature or by reaching out to our support team. Your insights are crucial to shaping VoiceZon’s future."
+  },
+  {
+    question: "Who is VoiceZon designed for?",
+    answer: "VoiceZon is crafted for anyone looking to enhance their personal development—whether you're just starting out or seeking to refine your skills. Our AI coaching adapts to your unique needs and progress."
   },
   {
     question: "Can I use VoiceZon on my mobile device?",
@@ -62,7 +66,7 @@ export default function FAQSection() {
         <h2 className="text-4xl font-bold text-[var(--color-dark-teal)] text-center mb-12">
           Frequently Asked Questions
         </h2>
-        
+
         <div className="space-y-2">
           {FAQData.map((faq, index) => (
             <FAQItem key={index} {...faq} />
