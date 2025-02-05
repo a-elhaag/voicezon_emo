@@ -5,6 +5,8 @@ import "./globals.css";
 import { cn } from "@/utils";
 import NavBar from "@/components/Nav";
 import FooterWrapper from "@/components/FooterWrapper";
+import { SpeedInsights } from "@vercel/speed-insights/next";
+import { Analytics } from '@vercel/analytics/next';
 
 export const metadata: Metadata = {
   title: "Voicezon",
@@ -33,6 +35,8 @@ export default function RootLayout({
       >
         <NavBar />
         {children}
+        <Analytics />
+        <SpeedInsights />
         <FooterWrapper />
       </body>
     </html>
