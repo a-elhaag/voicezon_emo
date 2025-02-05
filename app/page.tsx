@@ -8,12 +8,7 @@ import FAQSection from "@/components/FAQSection";
 import Link from "next/link";
 import PageBackground from "@/components/NetworkBg";
 
-interface MotionButtonProps {
-  children?: React.ReactNode;
-  size?: string;
-  className?: string;
-  onClick?: () => void;
-}
+
 
 
 function HeroSection() {
