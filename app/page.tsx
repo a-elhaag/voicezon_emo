@@ -234,7 +234,7 @@ export default function LandingPage() {
         <FeaturesSection />
         <FAQSection />
         <AboutSection />
-        <CTASection />
+        {/* <CTASection /> */}
 
       </div>
     </div>
