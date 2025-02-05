@@ -21,7 +21,7 @@ export default function Controls() {
   };
 
   return (
-    <div className="fixed bottom-0 left-0 w-full p-6 flex items-center justify-center bg-gradient-to-t from-background via-background/95 to-transparent">
+    <div className="fixed bottom-0 left-0 w-full p-4 flex items-center justify-center bg-gradient-to-t from-background via-background/95 to-transparent">
       <AnimatePresence>
         {status.value === "connected" && (
           <motion.div
@@ -29,8 +29,8 @@ export default function Controls() {
             animate={{ y: 0, opacity: 1 }}
             exit={{ y: 50, opacity: 0 }}
             transition={{ type: "spring", damping: 20, stiffness: 300 }}
-            className="p-4 bg-card/90 backdrop-blur-lg border border-border/40 rounded-2xl shadow-xl 
-                     flex items-center gap-6 hover:border-border/60 transition-all duration-300"
+            className="p-3 bg-card/90 backdrop-blur-lg border border-border/40 rounded-xl shadow-xl 
+                     flex items-center gap-4 hover:border-border/60 transition-all duration-300"
           >
             <Toggle
               pressed={!isMuted}
@@ -38,22 +38,22 @@ export default function Controls() {
               className="transition-transform hover:scale-105"
             >
               {isMuted ? (
-                <MicOff className="size-5 text-destructive" />
+                <MicOff className="size-4 text-destructive" />
               ) : (
-                <Mic className="size-5 text-[var(--color-dark-teal)]" />
+                <Mic className="size-4 text-[var(--color-dark-teal)]" />
               )}
             </Toggle>
 
-            <div className="relative h-10 w-56 shrink grow-0 rounded-lg overflow-hidden">
+            <div className="relative h-8 w-48 shrink grow-0 rounded-lg overflow-hidden">
               <MicFFT fft={micFft} className="fill-[var(--color-dark-teal)]" />
             </div>
 
             <Button
               onClick={handleDisconnect}
               variant="primary"
-              className="flex items-center gap-2 px-6 hover:scale-105 transition-transform bg-destructive hover:bg-destructive/90"
+              className="flex items-center gap-2 px-4 hover:scale-105 transition-transform bg-destructive hover:bg-destructive/90"
             >
-              <Phone className="size-5" />
+              <Phone className="size-4" />
             </Button>
           </motion.div>
         )}
