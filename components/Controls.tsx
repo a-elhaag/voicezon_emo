@@ -9,7 +9,7 @@ import { cn } from "@/utils";
 
 export default function Controls() {
   const { disconnect, status, isMuted, unmute, mute, micFft } = useVoice();
-  
+
   const handleDisconnect = async () => {
     try {
       await disconnect();
@@ -52,10 +52,8 @@ export default function Controls() {
               onClick={handleDisconnect}
               variant="primary"
               className="flex items-center gap-2 px-6 hover:scale-105 transition-transform bg-destructive hover:bg-destructive/90"
-              disabled={status.value === "disconnecting"}
             >
               <Phone className="size-5" />
-              <span>{status.value === "disconnecting" ? "Ending..." : "End Call"}</span>
             </Button>
           </motion.div>
         )}
