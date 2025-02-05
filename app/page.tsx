@@ -74,24 +74,22 @@ function FeaturesSection() {
       icon: <FaBrain size={40} color="var(--color-dark-teal)" />,
       title: "Emotion-Aware AI",
       shortDescription: "Understands your emotions to provide better guidance.",
-      detailedDescription: "VoiceZon uses real-time emotional analysis to deliver personalized insights for career and personal growth.",
-      badgeText: "New"
+      detailedDescription: "VoiceZon uses real-time emotional analysis to deliver personalized insights for both career and personal growth."
     },
     {
       icon: <FaBriefcase size={40} color="var(--color-dark-teal)" />,
       title: "Career Guidance",
       shortDescription: "Ace your interviews with mock sessions and expert advice.",
-      detailedDescription: "Get tailored feedback, relevant resources, and confidence-building strategies for your next big interview."
+      detailedDescription: "Receive tailored feedback, access relevant resources, and build confidence with strategies designed for your next big opportunity."
     },
     {
-      icon: <FaBrain size={40} color="var(--color-dark-teal)" />,
+      icon: <FaBriefcase size={40} color="var(--color-dark-teal)" />, // Updated icon to represent growth
       title: "Personal Growth",
-      shortDescription: "Set goals and track progress daily.",
-      detailedDescription: "Our intuitive system keeps you motivated with reminders and personalized challenges to reach new milestones.",
-      badgeText: "Pro"
+      shortDescription: "Achieve your best self with daily progress tracking.",
+      detailedDescription: "Our personalized platform helps you set meaningful goals, monitor your progress, and stay motivated with daily challenges and insights uniquely tailored to your journey."
     }
+    
   ];
-
   const cardVariants = {
     hidden: {
       opacity: 0,
